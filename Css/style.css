@@ -11,8 +11,7 @@
   --secondery-color: #30a8de;
   --text-color: #ffff;
   --dark-txt: #02132f;
-  --card-linear:                                
-;
+  --card-linear: linear-gradient(to top, #2863ca, #0744ae);
 }
 
 .row {
@@ -517,21 +516,64 @@ footer {
   .navbar-collpased {
     display: none;
   }
-  .menu {
+   .menu {
     margin-left: auto;
+    align-items: center;
     color: var(--text-color);
     display: block;
     position: relative;
+    padding: 5px 20px;
     z-index: 99;
+    display: flex;
   }
 
-  input[type="checkbox"]:checked ~ .navbar-collpased {
-    display: block;
+  .menu::after,
+  .menu::before {
+    content: "";
+    height: 2px;
+    background: var(--text-color);
     position: absolute;
+    display: inline-block;
+    left: 0;
+    right: 0;
+  }
+  .menu::after {
+    top: -5px;
+  }
+  .menu::before {
+    bottom: -5px;
+  }
+
+  .menu span {
+    height: 2px;
+    position: absolute;
+    background: var(--text-color);
+    display: inline-block;
+    left: 0;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.5s linear;
+  }
+  .menu.show span {
+    transform: translateX(-30px);
+    opacity: 0;
+  }
+
+  .menu.show::after {
+    transform: rotate(45deg) translate(12px);
+  }
+  .menu.show::before {
+    transform: rotate(-45deg) translate(12px);
+  }
+
+  .navbar-collpased {
+    display: block;
+    position: fixed;
     top: 0;
     bottom: 0;
     width: 60%;
-    right: 0;
+    right: -100%;
     background: var(--primary-bg);
     padding-top: 136px;
   }

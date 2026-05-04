@@ -27,10 +27,10 @@
               <img src="./asset/nav-logo.png" alt="" />
             </a>
           </div>
-          <label for="menu" class="menu">
-            <i class="fa-solid fa-bars"></i>
-          </label>
-          <input hidden type="checkbox" name="menu" id="menu" />
+          <div class="menu">
+            <span></span>
+          </div>
+         
           <div class="navbar-collpased">
             <ul>
               <li class="nav-items">
@@ -458,5 +458,23 @@
         </div>
       </div>
     </footer>
+
+    <script>
+       const menu = document.querySelector(".menu");
+      const navbarCollpased = document.querySelector(".navbar-collpased");
+      let open = true;
+
+      menu.addEventListener("click", () => {
+        if (open == true) {
+          menu.classList.add("show");
+          navbarCollpased.style.right = "0";
+          open = false;
+        } else {
+          menu.classList.remove("show");
+          navbarCollpased.style.right = "-100%";
+          open = true;
+        }
+      });
+    </script>
   </body>
 </html>
